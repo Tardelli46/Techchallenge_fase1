@@ -1,6 +1,4 @@
-# Tech Challenge — Fase 1 | Data Analytics 📊
-
-> Pós-Tech FIAP · Turma 2026
+# Tech Challenge — Fase 1 | Data Analytics 
 
 ![Jupyter](https://img.shields.io/badge/Ferramenta-Jupyter%20Notebook-orange)
 ![Status](https://img.shields.io/badge/Status-Concluído-green)
@@ -8,7 +6,7 @@
 
 ---
 
-## 🎯 Objetivo
+## Objetivo
 
 O trabalho investiga uma hipótese central: **o crescimento acelerado da Olist entre 2016 e 2018 pressionou a infraestrutura logística da plataforma, gerando aumento nos atrasos e queda direta na satisfação dos clientes.**
 
@@ -16,7 +14,7 @@ A análise parte de dados transacionais reais e constrói uma narrativa executiv
 
 ---
 
-## 📦 Dataset
+## Dataset
 
 **Brazilian E-Commerce Public Dataset by Olist** — disponível no [Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce).
 
@@ -26,7 +24,6 @@ Conjunto de dados públicos com pedidos reais (anonimizados) realizados em marke
 |--------|----------|
 | `olist_orders_dataset.csv` | Ciclo de vida do pedido: status, datas de compra, aprovação e entrega |
 | `olist_order_items_dataset.csv` | Composição dos pedidos: produto, seller, preço e frete por item |
-| `olist_order_payments_dataset.csv` | Forma e valor de pagamento, número de parcelas |
 | `olist_order_reviews_dataset.csv` | Nota do cliente (1–5) e comentários pós-entrega |
 | `olist_customers_dataset.csv` | Identificador único de cliente, localização por CEP e estado |
 | `olist_sellers_dataset.csv` | Cadastro de vendedores com estado e cidade |
@@ -34,7 +31,7 @@ Conjunto de dados públicos com pedidos reais (anonimizados) realizados em marke
 
 ---
 
-## 🗂️ Estrutura da Análise
+## Estrutura da Análise
 
 O notebook está organizado em 6 blocos sequenciais:
 
@@ -49,62 +46,33 @@ O notebook está organizado em 6 blocos sequenciais:
 
 ---
 
-## 📥 Como executar
 
-### 1. Baixe os dados
-
-Acesse o dataset no [Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) e extraia os arquivos CSV dentro de uma pasta chamada `data_sets/` na raiz do projeto:
-
-```
-data_sets/
-├── olist_orders_dataset.csv
-├── olist_order_items_dataset.csv
-├── olist_order_payments_dataset.csv
-├── olist_order_reviews_dataset.csv
-├── olist_customers_dataset.csv
-├── olist_sellers_dataset.csv
-└── olist_products_dataset.csv
-```
-
-### 2. Abra o notebook
-
-```bash
-jupyter notebook TECHCHALLENGE.ipynb
-```
-
-Execute as células na ordem — cada bloco depende das variáveis geradas pelo anterior.
-
----
-
-## 🔍 Principais Resultados
+## Principais Resultados
 
 - **Crescimento expressivo**: o volume de pedidos cresceu de forma consistente ao longo dos dois anos, com expansão para todos os estados do Brasil.
 - **Degradação logística acompanha o crescimento**: o percentual de pedidos com atraso aumentou à medida que o volume escalou.
 - **Atraso penaliza fortemente a avaliação**: pedidos atrasados recebem nota média de **2,57**, contra **4,29** para entregas no prazo — uma queda de **1,73 pontos**.
 - **Pipeline de entrega longo**: lead time médio total de **12,6 dias**, sendo o transporte a etapa mais demorada.
-- **Concentração de receita em poucos sellers**: pequena parcela dos vendedores responde por 80% da receita, criando risco de dependência operacional.
 - **Retenção de clientes baixa**: taxa de recompra em torno de 3%, indicando que o crescimento se apoia majoritariamente em aquisição de novos clientes.
 - **Qualidade varia significativamente por categoria**: existe um gap relevante de satisfação entre as categorias mais bem e pior avaliadas.
 
 ---
 
-## 📌 Entregáveis
+##  Entregáveis
 
 - Notebook analítico completo (`TECHCHALLENGE.ipynb`)
 - Relatório executivo em formato ABNT
-- Apresentação com os principais achados e recomendações
 
 ---
 
-## 📚 Referências
+## Referências
 
 - Olist — Brazilian E-Commerce Public Dataset (Kaggle, 2018)
 - Documentação Pandas, Matplotlib, Seaborn e NumPy
-- E-Commerce Report Brasil — ABComm/Ebit|Nielsen (2017–2018)
 
 ---
 
-## 👤 Autor
+## Autor
 
 | Nome | RM |
 |------|----|
