@@ -1,0 +1,7 @@
+data_sets/
+DATA_SETS/
+*.csv
+README_test.md
+gen_readme.py
+__pycache__/
+.ipynb_checkpoints/
