@@ -1,105 +1,113 @@
-# TECH CHALLENGE 1 - PÓS TECH FIAP 📊
+# Tech Challenge — Fase 1 | Data Analytics 📊
 
-> **TECH CHALLENGE 1 - Data Analytics** > Universidade FIAP - 2026
+> Pós-Tech FIAP · Turma 2026
 
-![Jupyter](https://img.shields.io/badge/Aplicação-Jupyter%20Notebook%20-orange)
+![Jupyter](https://img.shields.io/badge/Ferramenta-Jupyter%20Notebook-orange)
 ![Status](https://img.shields.io/badge/Status-Concluído-green)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
-## 📌 Sobre o Projeto
+---
 
-**Case E-commerce Olist**
-Este desafio propõe a construção de um relatório executivo voltado a investidores e acionistas do setor de e-commerce, baseado no Brazilian E-Commerce Public Dataset by Olist. O objetivo é transformar dados transacionais em uma narrativa clara sobre desempenho comercial, eficiência logística e/ou satisfação do cliente, culminando em recomendações acionáveis e, quando possível, previsões fundamentadas.
+## 🎯 Objetivo
+
+O trabalho investiga uma hipótese central: **o crescimento acelerado da Olist entre 2016 e 2018 pressionou a infraestrutura logística da plataforma, gerando aumento nos atrasos e queda direta na satisfação dos clientes.**
+
+A análise parte de dados transacionais reais e constrói uma narrativa executiva — do volume de pedidos à experiência do cliente — com foco em evidências quantitativas e recomendações acionáveis para investidores.
 
 ---
 
-## 📈 Sobre o Dataset
+## 📦 Dataset
 
-O dataset reúne aproximadamente 100 mil pedidos entre 2016 e 2018, cobrindo múltiplos marketplaces no Brasil. Inclui tabelas interconectadas de clientes, pedidos, itens, produtos, vendedores, pagamentos, avaliações e geolocalização por CEP. Os dados são reais e foram anonimizados. Há possibilidade de análises multidimensionais, como status do pedido, preço, meios de pagamento, desempenho de frete, localização, atributos de produto e reviews. 
+**Brazilian E-Commerce Public Dataset by Olist** — disponível no [Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce).
 
-O dataset pode ser acessado aqui (https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce).
+Conjunto de dados públicos com pedidos reais (anonimizados) realizados em marketplaces brasileiros. A análise cobre o período de **setembro de 2016 a outubro de 2018**, com foco nas tabelas de pedidos, itens, pagamentos, reviews, clientes, vendedores e produtos.
 
-**Período**: Setembro de 2016 - Agosto de 2018  
-**Formato**: CSV  
-**Total de tabelas**: 8
-
-## 🔎 Estrutura dos Dados e Dicionário
-
-| Tabela | Descrição | Registros |
-|--------|-----------|-----------|
-| `olist_orders_dataset`: order_id, customer_id, status, timestamps de compra/aprovação/entrega | Informações dos pedidos | ~100k |
-| `olist_order_items_dataset`: order_id, item_id, product_id, seller_id, shipping_limit_date, price, freight_value | Itens de cada pedido | ~112k |
-| `olist_order_payments_dataset`: order_id, payment_type, installments, payment_value | Dados de pagamento | ~103k |
-| `olist_order_reviews_dataset`: order_id, review_score, timestamps, review_comment_title/text | Avaliações dos clientes | ~99k |
-| `olist_customers_dataset`: customer_id, customer_unique_id, zip_code_prefix, cidade, estado | Informações dos clientes | ~99k |
-| `olist_sellers_dataset`: seller_id, zip_code_prefix, cidade, estado | Dados dos vendedores | ~3k |
-| `olist_products_dataset`: product_id, category_name, pesos/medidas, descrição | Catálogo de produtos | ~32k |
-| `olist_geolocation_dataset`: zip_code_prefix, latitude, longitude, cidade, estado | Dados geográficos | ~1M |
-| `category_translation`: tradução de nomes de categorias para inglês |  |  |
+| Tabela | Conteúdo |
+|--------|----------|
+| `olist_orders_dataset.csv` | Ciclo de vida do pedido: status, datas de compra, aprovação e entrega |
+| `olist_order_items_dataset.csv` | Composição dos pedidos: produto, seller, preço e frete por item |
+| `olist_order_payments_dataset.csv` | Forma e valor de pagamento, número de parcelas |
+| `olist_order_reviews_dataset.csv` | Nota do cliente (1–5) e comentários pós-entrega |
+| `olist_customers_dataset.csv` | Identificador único de cliente, localização por CEP e estado |
+| `olist_sellers_dataset.csv` | Cadastro de vendedores com estado e cidade |
+| `olist_products_dataset.csv` | Categoria, peso e dimensões dos produtos |
 
 ---
 
-## 📥 Como reproduzir a análise
+## 🗂️ Estrutura da Análise
 
-### 1. Baixe o dataset
-Download diretamente do Kaggle:
+O notebook está organizado em 6 blocos sequenciais:
 
-🔗 [Brazilian E-Commerce Public Dataset by Olist — Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
+| Bloco | Foco |
+|-------|------|
+| **1. Preparação dos dados** | Merge das 7 tabelas, engenharia de features, checagem de qualidade e cobertura |
+| **2. KPIs executivos** | Painel de indicadores: receita total, ticket médio, nota média, % atraso, frete |
+| **3. Crescimento** | Evolução mensal de receita e pedidos, expansão geográfica, categorias, segmentação RFM e projeção de tendência |
+| **4. Logística** | Pipeline de entrega por etapa (aprovação → postagem → transporte), atrasos por estado e meios de pagamento |
+| **5. Satisfação** | Correlação entre atraso e nota, impacto por faixa de prazo, desempenho de sellers e mapa de estados |
+| **6. Conclusões** | Tabela-resumo de achados e recomendações estratégicas |
 
-Após baixar, extraia os arquivos CSV na pasta `dataset/`. Os arquivos esperados são:
+---
+
+## 📥 Como executar
+
+### 1. Baixe os dados
+
+Acesse o dataset no [Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) e extraia os arquivos CSV dentro de uma pasta chamada `data_sets/` na raiz do projeto:
 
 ```
-data/
+data_sets/
 ├── olist_orders_dataset.csv
-├── olist_customers_dataset.csv
 ├── olist_order_items_dataset.csv
 ├── olist_order_payments_dataset.csv
 ├── olist_order_reviews_dataset.csv
-├── olist_products_dataset.csv
-└── olist_sellers_dataset.csv
+├── olist_customers_dataset.csv
+├── olist_sellers_dataset.csv
+└── olist_products_dataset.csv
 ```
 
-### 2. Execute o notebook
-Abra `notebook/TechChallenge1_Datanalytics_Postech_FIAP.ipynb` no Google Colab ou Jupyter e execute as células sequencialmente.
+### 2. Abra o notebook
 
 ```bash
-# Ou via terminal com Jupyter
-jupyter notebook notebook/TechChallenge1_Datanalytics_Postech_FIAP.ipynb
+jupyter notebook TECHCHALLENGE.ipynb
 ```
+
+Execute as células na ordem — cada bloco depende das variáveis geradas pelo anterior.
+
 ---
 
-## 📊 Principais Insights
-- Crescimento consistente de receita entre 2016–2018.  
-- Dependência de poucos sellers e regiões (SP concentra maior parte da receita).  
-- Logística crítica em estados do Norte, impactando satisfação.  
-- Baixa taxa de recompra (3,12%), indicando necessidade de fidelização.  
-- Preferência cultural pelo parcelamento no cartão de crédito.  
-- Polarização das avaliações (muitos 5, mas também muitos 1).  
+## 🔍 Principais Resultados
+
+- **Crescimento expressivo**: o volume de pedidos cresceu de forma consistente ao longo dos dois anos, com expansão para todos os estados do Brasil.
+- **Degradação logística acompanha o crescimento**: o percentual de pedidos com atraso aumentou à medida que o volume escalou.
+- **Atraso penaliza fortemente a avaliação**: pedidos atrasados recebem nota média de **2,57**, contra **4,29** para entregas no prazo — uma queda de **1,73 pontos**.
+- **Pipeline de entrega longo**: lead time médio total de **12,6 dias**, sendo o transporte a etapa mais demorada.
+- **Concentração de receita em poucos sellers**: pequena parcela dos vendedores responde por 80% da receita, criando risco de dependência operacional.
+- **Retenção de clientes baixa**: taxa de recompra em torno de 3%, indicando que o crescimento se apoia majoritariamente em aquisição de novos clientes.
+- **Qualidade varia significativamente por categoria**: existe um gap relevante de satisfação entre as categorias mais bem e pior avaliadas.
 
 ---
 
 ## 📌 Entregáveis
 
-- Relatório executivo em formato ABNT.
-- Apresentação executiva com principais análises e destaques.
-- Notebook completo, comentado e organizado trilha por trilha.  
-- Documentação dos dados (premissas, qualidade, reprodutibilidade).  
+- Notebook analítico completo (`TECHCHALLENGE.ipynb`)
+- Relatório executivo em formato ABNT
+- Apresentação com os principais achados e recomendações
 
 ---
 
 ## 📚 Referências
 
-- Olist Dataset – Brazilian E-Commerce Public Dataset by Olist.  
-- Relatórios de mercado de e-commerce no Brasil (2016–2018).  
-- Estudos sobre comportamento de consumo e parcelamento no Brasil.  
+- Olist — Brazilian E-Commerce Public Dataset (Kaggle, 2018)
+- Documentação Pandas, Matplotlib, Seaborn e NumPy
+- E-Commerce Report Brasil — ABComm/Ebit|Nielsen (2017–2018)
 
 ---
 
-## 👥 Integrantes do Grupo
+## 👤 Autor
 
 | Nome | RM |
 |------|----|
-| **Emerson Henrique de Lima e Sousa** | 373751 |
-| **Moacyr Souza Barros** | 373412 |
+| **Felipe Lins Prado Tardelli** | 374386 |
 
 ---
